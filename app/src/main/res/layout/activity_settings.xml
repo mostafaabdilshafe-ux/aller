@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#1C120B">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="رابط السيرفر"
+        android:textColor="#F5E8D8"
+        android:textSize="14sp"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/serverUrlInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="http://192.168.1.5:3000"
+        android:textColorHint="#8a7660"
+        android:textColor="#F5E8D8"
+        android:backgroundTint="#4A3220"
+        android:inputType="textUri"
+        android:layout_marginBottom="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الرقم السري (نفس رقم لوحة المدير)"
+        android:textColor="#F5E8D8"
+        android:textSize="14sp"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/pinInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="مثال: 135790"
+        android:textColorHint="#8a7660"
+        android:textColor="#F5E8D8"
+        android:backgroundTint="#4A3220"
+        android:inputType="numberPassword"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="حفظ وتشغيل"
+        android:textAllCaps="false"
+        android:backgroundTint="#E0A52E"
+        android:textColor="#FFFFFF"
+        android:padding="14dp"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/batteryBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="استثناء التطبيق من توفير البطارية (مهم)"
+        android:textAllCaps="false"
+        android:backgroundTint="#352315"
+        android:textColor="#F5E8D8"
+        android:padding="14dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="ملحوظة: على بعض الموبايلات (شاومي، هواوي، إلخ)، النظام بيوقف التطبيقات الشغالة في الخلفية توفيرًا للبطارية. استخدم الزرار فوق عشان تمنع ده، وإلا التنبيهات ممكن تتأخر أو تتوقف."
+        android:textColor="#C4A889"
+        android:textSize="12sp"
+        android:lineSpacingExtra="4dp" />
+
+</LinearLayout>

@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.OrderAlert" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFB347</item>
+        <item name="colorPrimaryDark">#1C120B</item>
+        <item name="colorAccent">#E0A52E</item>
+        <item name="android:windowBackground">#1C120B</item>
+    </style>
+</resources>

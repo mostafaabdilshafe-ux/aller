@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1C120B">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:background="#2B1C12">
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="بيتم الاتصال..."
+            android:textColor="#C4A889"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/settingsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚙️ إعدادات"
+            android:textAllCaps="false"
+            android:backgroundTint="#352315"
+            android:textColor="#F5E8D8" />
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
