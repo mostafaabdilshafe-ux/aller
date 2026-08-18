@@ -39,5 +39,4 @@
         android:layout_weight="1" />
 
 </LinearLayout>
-بعد ما تعمل Commit changes، شغّل الـGitHub Action تاني.
-ما نغيّرش أي ملف تاني دلوقتي. ابعتلي نتيجة الـBuild الجديدة، حتى لو فيها خطأ، ونحل الخطوة اللي بعدها.
+
