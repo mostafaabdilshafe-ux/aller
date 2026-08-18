@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private val termuxPermission = "com.termux.permission.RUN_COMMAND"
     private val permissionRequestCode = 100
     private var pendingAction: (() -> Unit)? = null
+    private var isServerRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,22 +42,28 @@ class MainActivity : AppCompatActivity() {
         }
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
+        isServerRunning = getSharedPreferences("app_state", MODE_PRIVATE)
+            .getBoolean("server_running", false)
+        updateToggleButton()
+
+        findViewById<Button>(R.id.toggleServerBtn).setOnClickListener {
+            ensureTermuxPermission {
+                if (isServerRunning) {
+                    runTermuxScript("/data/data/com.termux/files/home/stop-server.sh")
+                    Toast.makeText(this, "بيتم إيقاف السيرفر...", Toast.LENGTH_SHORT).show()
+                } else {
+                    runTermuxScript("/data/data/com.termux/files/home/start-server.sh")
+                    Toast.makeText(this, "بيتم تشغيل السيرفر...", Toast.LENGTH_SHORT).show()
+                }
+                isServerRunning = !isServerRunning
+                getSharedPreferences("app_state", MODE_PRIVATE).edit()
+                    .putBoolean("server_running", isServerRunning).apply()
+                updateToggleButton()
+            }
+        }
+
         findViewById<Button>(R.id.settingsBtn).setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
-        }
-
-        findViewById<Button>(R.id.startServerBtn).setOnClickListener {
-            ensureTermuxPermission {
-                runTermuxScript("/data/data/com.termux/files/home/start-server.sh")
-                Toast.makeText(this, "بيتم تشغيل السيرفر...", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        findViewById<Button>(R.id.stopServerBtn).setOnClickListener {
-            ensureTermuxPermission {
-                runTermuxScript("/data/data/com.termux/files/home/stop-server.sh")
-                Toast.makeText(this, "بيتم إيقاف السيرفر...", Toast.LENGTH_SHORT).show()
-            }
         }
 
         setupWebView()
@@ -68,14 +75,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        loadAdminPage()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        loadAdminPage()
+    private fun updateToggleButton() {
+        val btn = findViewById<Button>(R.id.toggleServerBtn)
+        btn.background = ContextCompat.getDrawable(
+            this,
+            if (isServerRunning) R.drawable.circle_on else R.drawable.circle_off
+        )
     }
 
     private fun ensureTermuxPermission(action: () -> Unit) {
@@ -113,8 +118,18 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("com.termux.RUN_COMMAND_BACKGROUND", true)
             startService(intent)
         } catch (e: Exception) {
-            Toast.makeText(this, "تأكد إن Termux مثبت ومفعّل فيه allow-external-apps", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "فشل تشغيل الأمر: ${e.message}", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        loadAdminPage()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadAdminPage()
     }
 
     private fun setupWebView() {
