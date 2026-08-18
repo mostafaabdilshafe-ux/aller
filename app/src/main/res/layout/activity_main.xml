@@ -1,5 +1,4 @@
-تمام، نخليها بسيطة جدًا. بس بما إنك هتعدّل الملف بنفسك، خلينا نعمل خطوة واحدة فقط:
-افتح activity_main.xml في GitHub، واستبدل محتواه كله بالكود ده:
+
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
