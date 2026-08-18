@@ -3,33 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:background="#1C120B">
 
-    <TextView
-        android:id="@+id/statusText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="حالة السيرفر"
-        android:textSize="18sp"
-        android:padding="10dp" />
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:background="#2B1C12">
 
-    <Button
-        android:id="@+id/startServerBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="تشغيل السيرفر" />
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="بيتم الاتصال..."
+            android:textColor="#C4A889"
+            android:textSize="13sp" />
 
-    <Button
-        android:id="@+id/stopServerBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="إيقاف السيرفر" />
+        <Button
+            android:id="@+id/toggleServerBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text=""
+            android:background="@drawable/circle_off" />
 
-    <Button
-        android:id="@+id/settingsBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="الإعدادات" />
+        <Button
+            android:id="@+id/settingsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚙️ إعدادات"
+            android:textAllCaps="false"
+            android:backgroundTint="#352315"
+            android:textColor="#F5E8D8" />
+    </LinearLayout>
 
     <WebView
         android:id="@+id/webView"
