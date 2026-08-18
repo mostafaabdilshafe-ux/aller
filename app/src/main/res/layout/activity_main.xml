@@ -1,36 +1,37 @@
+تمام، نخليها بسيطة جدًا. بس بما إنك هتعدّل الملف بنفسك، خلينا نعمل خطوة واحدة فقط:
+افتح activity_main.xml في GitHub، واستبدل محتواه كله بالكود ده:
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#1C120B">
+    android:padding="20dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/statusText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:gravity="center_vertical"
-        android:background="#2B1C12">
+        android:text="حالة السيرفر"
+        android:textSize="18sp"
+        android:padding="10dp" />
 
-        <TextView
-            android:id="@+id/statusText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="بيتم الاتصال..."
-            android:textColor="#C4A889"
-            android:textSize="13sp" />
+    <Button
+        android:id="@+id/startServerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="تشغيل السيرفر" />
 
-        <Button
-            android:id="@+id/settingsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⚙️ إعدادات"
-            android:textAllCaps="false"
-            android:backgroundTint="#352315"
-            android:textColor="#F5E8D8" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/stopServerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="إيقاف السيرفر" />
+
+    <Button
+        android:id="@+id/settingsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="الإعدادات" />
 
     <WebView
         android:id="@+id/webView"
@@ -39,3 +40,5 @@
         android:layout_weight="1" />
 
 </LinearLayout>
+بعد ما تعمل Commit changes، شغّل الـGitHub Action تاني.
+ما نغيّرش أي ملف تاني دلوقتي. ابعتلي نتيجة الـBuild الجديدة، حتى لو فيها خطأ، ونحل الخطوة اللي بعدها.
